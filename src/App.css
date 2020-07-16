@@ -2,17 +2,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,15 +13,100 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* .tg {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tg td {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
 }
+.tg th {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
+}
+.tg .tg-z0iz {
+  background-color: #fffc9e;
+  text-align: left;
+  vertical-align: top;
+}
+.tg .tg-u287 {
+  background-color: #68cbd0;
+  text-align: left;
+  vertical-align: top;
+}
+.tg .tg-cmwg {
+  background-color: #ffccc9;
+  text-align: center;
+  vertical-align: top;
+}
+.tg .tg-yofg {
+  background-color: #9aff99;
+  text-align: left;
+  vertical-align: top;
+}
+.tg .tg-qssw {
+  background-color: #f8a102;
+  text-align: left;
+  vertical-align: top;
+}
+.tg .tg-cxgh {
+  background-color: #ffcb2f;
+  text-align: left;
+  vertical-align: top;
+}
+.tg .tg-hyan {
+  background-color: #34cdf9;
+  text-align: left;
+  vertical-align: top;
+}
+.tg .tg-ikmv {
+  background-color: #cbcefb;
+  text-align: left;
+  vertical-align: top;
+}
+.tg .tg-q3eh {
+  background-color: #68cbd0;
+  text-align: center;
+  vertical-align: top;
+}
+.tg .tg-ltxa {
+  background-color: #ffccc9;
+  text-align: left;
+  vertical-align: top;
+}
+.tg .tg-sh07 {
+  background-color: #cbcefb;
+  text-align: center;
+  vertical-align: top;
+}
+.tg .tg-m9r4 {
+  background-color: #ffffc7;
+  text-align: left;
+  vertical-align: top;
+}
+@media screen and (max-width: 767px) {
+  .tg {
+    width: auto !important;
+  }
+  .tg col {
+    width: auto !important;
+  }
+  .tg-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+} */
