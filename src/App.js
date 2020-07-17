@@ -40,6 +40,11 @@ function App() {
 
   const checkBoardClickHandler = () => {
     setShowResults(!showResults);
+    if (!validGrid) {
+      setTimeout(() => {
+        setShowResults(false);
+      }, 2500);
+    }
   };
   const newBoardClickHandler = () => {
     setGrid(defaultGrid);
@@ -47,13 +52,10 @@ function App() {
     setShowResults(false);
   };
   return (
-    <div className='App'>
-      {showResults && validGrid ? (
-        <h1>Valid Grid!</h1>
-      ) : (
-        <h1 style={{ visibility: 'hidden' }}>placeholder</h1>
-      )}
-      {showResults && !validGrid && <h1>Failure!</h1>}
+    <div className='app'>
+      {!showResults && <h3 className='app-header'>Sudoku?</h3>}{' '}
+      {showResults && validGrid && <h4 className='results'>Valid Grid!</h4>}
+      {showResults && !validGrid && <h4 className='results'>Failure!</h4>}
       <Table grid={grid} setGrid={setGrid} />
       {showButtons ? (
         <BoardMaker
@@ -63,8 +65,14 @@ function App() {
         />
       ) : (
         <>
-          <button onClick={checkBoardClickHandler}>Check Board!</button>
-          <button onClick={newBoardClickHandler}>New Board!</button>
+          <div align='center'>
+            <button className='semi-trans' onClick={checkBoardClickHandler}>
+              Check Board
+            </button>
+            <button className='semi-trans' onClick={newBoardClickHandler}>
+              New Game
+            </button>
+          </div>
         </>
       )}
       {/* For Future Reference */}
@@ -75,6 +83,7 @@ function App() {
         validGrid={validGrid}
         setValidGrid={setValidGrid}
       /> */}
+      <img src='src\assets\sudoku-logo.png' alt='' />
     </div>
   );
 }

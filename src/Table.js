@@ -21,8 +21,8 @@ const Table = ({ grid, setGrid }) => {
   };
 
   return (
-    <div className='tg-wrap'>
-      <table className='tg'>
+    <div>
+      <table className='tg table-wrap'>
         {grid.map((row, rowIdx) => {
           return (
             <tbody key={rowIdx}>

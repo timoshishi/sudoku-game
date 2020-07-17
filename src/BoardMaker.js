@@ -23,7 +23,6 @@ const BoardMaker = ({ setGrid, showButtons, setShowButtons }) => {
 
   //FUNCTION TO EMPTY A NUMBER OF INDICES ACCORDING TO LEVEL
   let boardMaker = (board, num) => {
-    let returnBoard = [];
     const numGen = () => {
       let x = Math.floor(Math.random() * 9);
       let y = Math.floor(Math.random() * 9);
@@ -48,21 +47,37 @@ const BoardMaker = ({ setGrid, showButtons, setShowButtons }) => {
     let finalBoard = boardMaker(fullBoard, difficulty);
     setGrid(finalBoard);
     setShowButtons(!showButtons);
+    console.log(fullBoard);
   };
 
   return (
-    <div>
-      <h4>Choose Your Difficulty</h4>
-      <button value='easy' onClick={clickHandler}>
+    <div align='center'>
+      <button
+        className='semi-trans'
+        value='easy'
+        href='!#'
+        onClick={clickHandler}>
         Easy
       </button>
-      <button value='medium' onClick={clickHandler}>
+      <button
+        className='semi-trans'
+        value='medium'
+        href='!#'
+        onClick={clickHandler}>
         Medium
       </button>
-      <button value='hard' onClick={clickHandler}>
+      <button
+        className='semi-trans'
+        value='hard'
+        href='!#'
+        onClick={clickHandler}>
         Hard
       </button>
-      <button value='full' onClick={clickHandler}>
+      <button
+        className='semi-trans'
+        value='full'
+        href='!#'
+        onClick={clickHandler}>
         Full Board
       </button>
     </div>
