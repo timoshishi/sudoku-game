@@ -35,34 +35,34 @@ input {
   overflow: hidden;
   padding: 10px 5px;
   word-break: normal;
-  width: 2em;
+  width: 2.8em;
   height: 2em;
 }
 
 .section-1 {
-  background-color: #fffc9e;
+  background-color: #ff0081;
 }
 .section-2 {
-  background-color: #68cbd0;
+  background-color: #42c6ff;
 }
 .section-3 {
-  background-color: #ffccc9;
+  background-color: #ff0081;
 }
 .section-4 {
-  background-color: #9aff99;
+  background-color: #42c6ff;
 }
 .section-5 {
-  background-color: #f8a102;
+  background-color: #f4b80c;
 }
 .section-6 {
-  background-color: #ffcb2f;
+  background-color: #42c6ff;
 }
 .section-7 {
-  background-color: #34cdf9;
+  background-color: #ff0081;
 }
 .section-8 {
-  background-color: #cbcefb;
+  background-color: #42c6ff;
 }
 .section-9 {
-  background-color: #68cbd0;
+  background-color: #ff0081;
 }

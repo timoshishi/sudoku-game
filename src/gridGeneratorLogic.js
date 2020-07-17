@@ -1,5 +1,6 @@
 import { boardDuplicateChecker } from './gridCheckerLogic';
 
+// eslint-disable-next-line
 const defaultTable = [
   ['', '', '', '', '', '', '', '', ''],
   ['', '', '', '', '', '', '', '', ''],
@@ -48,7 +49,7 @@ const boardCopier = (board) => {
   return copy;
 };
 
-const startingGridBuilder = () => {
+const startingGridBuilder = (difficulty) => {
   //create empty 9x9 grid of empty strings
   let returnBoard = emptyGridMaker();
 
@@ -56,37 +57,35 @@ const startingGridBuilder = () => {
   let filledSquares = difficultySetting('easy');
 
   //function running inside main function so it can be called recursively?
-  const numberPlacer = () => {
-    for (let i = 0; i < filledSquares; i++) {
-      //generate new coordinates on each loop
-      let [x, y] = coordinateGen();
-
-      //deep copy the return board
-      let localBoard = boardCopier(returnBoard);
-
-      // if board space is available
-      if (localBoard[x][y] === '') {
-        //place a random number 0 - 8 into the coords in local board
-        localBoard[x][y] = Math.floor(Math.random() * 9);
-
-        //run validator after placing into board
-        let validBoard = boardDuplicateChecker(localBoard);
-        if (!validBoard) {
-          //reset the square that caused it to fail
-          localBoard[(x, y)] = '';
-
-          //if dupes exist, run number placer again until valid spot is found
-          localBoard = numberPlacer();
-        }
-        //if the board check is valid, deep copy the updated local board to the returnBoard that exists outside this function
-        else returnBoard = boardCopier(localBoard);
-      }
+  const numberPlacer = (num) => {
+    if (num === 0) {
+      return returnBoard;
     }
-    //after loop has finished and filled the appropriate amt of squares
-    return returnBoard;
+    //generate new coordinates on each iteration
+    let [x, y] = coordinateGen();
+    //deep copy the return board
+    let localBoard = boardCopier(returnBoard);
+    // if board space is available
+    if (localBoard[x][y] === '') {
+      //place a random number 0 - 8 into the coords in local board
+      localBoard[x][y] = Math.floor(Math.random() * 9);
+      //run validator after placing new number at coords
+      let validBoard = boardDuplicateChecker(localBoard);
+      if (!validBoard) {
+        //reset the square that caused it to fail
+        localBoard[x][y] = '';
+
+        //if dupes exist, run number placer again until valid spot is found
+        localBoard = numberPlacer(num - 1);
+      }
+      //if the board check is valid, deep copy the updated local board to the returnBoard that exists outside this function
+      else returnBoard = boardCopier(localBoard);
+    }
+    //invokes numberPlacer and returns the result
+    numberPlacer(filledSquares);
   };
-  //invokes numberPlacer and returns the result
-  return numberPlacer();
+  //after loop has finished and filled the appropriate amt of squares
+  return returnBoard();
 };
 
 // let [x,y] = coordinateGen()

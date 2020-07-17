@@ -7,7 +7,8 @@ const GridChecker = ({ grid, setGrid, puzzle, setValidGrid }) => {
   //       console.log(sudokuChecker(puzzle));
   //     }
   //   }, [gridToCheck]);
-  const stringHandler = () => {
+  const [valid, setValid] = useState(false);
+  const stringHandler = (gridToCheck) => {
     let reg = /[0-9]/g;
     let numStr = gridToCheck.match(reg);
     let newGrid = [];
@@ -19,6 +20,7 @@ const GridChecker = ({ grid, setGrid, puzzle, setValidGrid }) => {
       let sliced = numArr.slice(i, i + 9);
       newGrid.push(sliced);
     }
+    setValid(sudokuChecker(newGrid));
     if (sudokuChecker(newGrid)) {
       setGrid(newGrid);
     }
@@ -27,6 +29,7 @@ const GridChecker = ({ grid, setGrid, puzzle, setValidGrid }) => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
+
     // need to
     setGridToCheck(e.target.value);
     stringHandler(gridToCheck);
@@ -43,6 +46,7 @@ const GridChecker = ({ grid, setGrid, puzzle, setValidGrid }) => {
         value={gridToCheck || ''}
         onChange={(e) => setGridToCheck(e.target.value)}></textarea>
       <button type='submit'>Validate your board!</button>
+      {valid ? <h1>VALID</h1> : <h1>NOT</h1>}
     </form>
   );
 };

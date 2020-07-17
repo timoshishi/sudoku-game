@@ -7,6 +7,8 @@ const Table = ({ grid, setGrid }) => {
 
   const colors = (id) => {
     const idArr = id.split('-');
+
+    ///preserving in separate sections for now in case i need more granular control
     if (idArr[0] < 3 && idArr[1] < 3) return 'section-1';
     if (idArr[0] < 3 && idArr[1] < 6) return 'section-2';
     if (idArr[0] < 3 && idArr[1] < 9) return 'section-3';
