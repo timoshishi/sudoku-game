@@ -1,5 +1,7 @@
 import React from 'react';
 import { sudokuBoards } from './sudokuBoards.js';
+import PropTypes from 'prop-types';
+
 const BoardMaker = ({ setGrid, showButtons, setShowButtons }) => {
   //FUNCTION TO TAKE IN STRINGS OF VALID SUDOKU BOARDS AND MAKE GRIDS
   let sudoStringHandler = (sudo) => {
@@ -12,27 +14,31 @@ const BoardMaker = ({ setGrid, showButtons, setShowButtons }) => {
     }
     return board;
   };
+
   //FUNCTION TO GENERATE NUMBERS BASED ON DIFFICULTY
   const difficultySetting = (level) => {
     if (level === 'easy') level = 36;
-    if (level === 'medium') level = Math.floor(Math.random() * (33 - 27)) + 26;
-    if (level === 'hard') level = Math.floor(Math.random() * (25 - 20)) + 19;
+    if (level === 'medium') level = Math.floor(Math.random() * (32 - 25)) + 25;
+    if (level === 'hard') level = Math.floor(Math.random() * (23 - 18)) + 18;
     if (level === 'full') level = 81;
     return level;
   };
 
-  //FUNCTION TO EMPTY A NUMBER OF INDICES ACCORDING TO LEVEL
-  let boardMaker = (board, num) => {
-    const numGen = () => {
+  //FUNCTION TO EMPTY A NUMBER OF INDICES ACCORDING TO DIFFICULTY LEVEL
+  let boardMaker = (board, level) => {
+    const coordsGen = () => {
       let x = Math.floor(Math.random() * 9);
       let y = Math.floor(Math.random() * 9);
       return [x, y];
     };
 
-    let removeNum = 81 - num;
-    let i = removeNum - 1;
+    let removeNum = 81 - level - 1;
+
+    //IF SPOT CONTAINS NUMBER RECPLACE THAT INDEX WITH EMPTY STRING
+    //This is where I should create a history board that can use to solve the whole puzzle or generate hints
+    let i = removeNum;
     while (i >= 0) {
-      let [x, y] = numGen();
+      let [x, y] = coordsGen();
       if (board[x][y] === '') {
         continue;
       }
@@ -41,13 +47,14 @@ const BoardMaker = ({ setGrid, showButtons, setShowButtons }) => {
     }
     return board;
   };
+
+  //HANDLES ALL THREE DIFFICULTY BUTTONS
   const clickHandler = (e) => {
     let difficulty = difficultySetting(e.target.value);
-    let fullBoard = sudoStringHandler();
-    let finalBoard = boardMaker(fullBoard, difficulty);
+    let solvedBoard = sudoStringHandler();
+    let finalBoard = boardMaker(solvedBoard, difficulty);
     setGrid(finalBoard);
     setShowButtons(!showButtons);
-    console.log(fullBoard);
   };
 
   return (
@@ -84,4 +91,9 @@ const BoardMaker = ({ setGrid, showButtons, setShowButtons }) => {
   );
 };
 
+BoardMaker.propTypes = {
+  setGrid: PropTypes.func.isRequired,
+  showButtons: PropTypes.bool.isRequired,
+  setShowButtons: PropTypes.func.isRequired,
+};
 export default BoardMaker;

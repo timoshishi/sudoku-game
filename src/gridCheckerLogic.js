@@ -1,3 +1,4 @@
+//ALL GRIDS AND ARRAYS HERE ARE FOR TESTING PURPOSES
 // eslint-disable-next-line
 let validSection = [8, 9, 5, 7, 4, 2, 1, 3, 6];
 // eslint-disable-next-line
@@ -42,10 +43,11 @@ let invalidPuzzle = [
   [7, 4, 6, 3, 2, 5, 8, 1, 9],
   [3, 2, 8, 1, 9, 6, 5, 4, 7],
 ];
-
+//GETS SINGLE ROW TO BE EVALUATED
 export const getRow = (grid, rowIdx) => {
   return grid[rowIdx];
 };
+//GETS SINGLE COLUMN TO BE EVALUATED
 const getColumn = (grid, columnIdx) => {
   let column = [];
   for (let i = 0; i < grid.length; i++) {
@@ -57,6 +59,7 @@ const getColumn = (grid, columnIdx) => {
   }
   return column.flat();
 };
+//GETS A SINGLE SECTION FOR VALIDATION
 export const getSection = (grid, column, rowX) => {
   //most annoying, worked for 0,0 originally so made sudokuChecker, couldnt figure out why it only worked  at location 0,0, problem was start row was not being incremented with startIdx
   let section = [];
@@ -77,6 +80,7 @@ export const getSection = (grid, column, rowX) => {
   }
   return section;
 };
+//TO CHECK IF SECTION CONTAINS AlL NUMBERS
 export const includes1to9 = (subSection) => {
   for (let i = 1; i < 9; i++) {
     if (!subSection.includes(i)) return false;
@@ -102,6 +106,7 @@ export const noDupeSection = (subSection) => {
   }
   return true;
 };
+//CHECKS FOR DUPLICATES ON THE BOARD
 export const boardDuplicateChecker = (grid) => {
   for (let i = 0; i < grid.length; i++) {
     if (!noDupeSection(getRow(grid, i))) return false;
@@ -158,4 +163,4 @@ export const isSame = (grid1, grid2) => {
   return true;
 };
 
-console.log(boardDuplicateChecker(puzzleClone));
+//console.log(boardDuplicateChecker(puzzleClone));

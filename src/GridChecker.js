@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { sudokuChecker } from './gridCheckerLogic';
+
+//LEGACY COMPONENT - USED TO CHECK VALIDITY OF A PASSED IN SUDOKU GRID OR STRING OF SUDOKU NUMBERS
 const GridChecker = ({ grid, setGrid, puzzle, setValidGrid }) => {
   const [gridToCheck, setGridToCheck] = useState('');
-  //   useEffect(() => {
-  //     if (gridToCheck) {
-  //       console.log(sudokuChecker(puzzle));
-  //     }
-  //   }, [gridToCheck]);
   const [valid, setValid] = useState(false);
   const stringHandler = (gridToCheck) => {
     let reg = /[0-9]/g;

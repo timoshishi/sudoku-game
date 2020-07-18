@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
 import TableData from './TableData';
+import PropTypes from 'prop-types';
+
 const Table = ({ grid, setGrid }) => {
   useEffect(() => {
     setGrid(grid);
   }, [grid, setGrid]);
 
+  //Set Colors Dynamically depending on id/grid coordinates
   const colors = (id) => {
     const idArr = id.split('-');
-
-    ///preserving in separate sections for now in case i need more granular control
+    ///preserving in separate sections for now in case I need more granular control
     if (idArr[0] < 3 && idArr[1] < 3) return 'section-1';
     if (idArr[0] < 3 && idArr[1] < 6) return 'section-2';
     if (idArr[0] < 3 && idArr[1] < 9) return 'section-3';
@@ -24,6 +26,8 @@ const Table = ({ grid, setGrid }) => {
     <div>
       <table className='tg table-wrap'>
         {grid.map((row, rowIdx) => {
+          //2d array so needs to be mapped twice
+          //get indexes from both maps to set the cell key/id number as its grid coordinates
           return (
             <tbody key={rowIdx}>
               {rowIdx >= 0 && rowIdx < 3 && (
@@ -78,5 +82,8 @@ const Table = ({ grid, setGrid }) => {
     </div>
   );
 };
-
+Table.propTypes = {
+  grid: PropTypes.array.isRequired,
+  setGrid: PropTypes.func.isRequired,
+};
 export default Table;
