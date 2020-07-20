@@ -1,22 +1,28 @@
 // eslint-disable-next-line
-import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useRef, useEffect, useLayoutEffect } from 'react'
+import PropTypes from 'prop-types'
 
-const TableData = ({ cellData, cellIdx, rowIdx, colors, setGrid, grid }) => {
-  // const inputEl = useRef(null);
-  // useEffect(() => {
-  //   if (typeof grid[rowIdx][cellIdx] === 'number') {
-  //     inputEl.current.disabled = true;
-  //     console.log(true);
-  //   }
-  // }, [grid]);
+const TableData = ({
+  cellData,
+  cellIdx,
+  rowIdx,
+  colors,
+  setGrid,
+  grid,
+  editable,
+}) => {
+  const inputEl = useRef(null)
+  // useLayoutEffect(() => {
+  //   if (!editable) inputEl.current.disabled = true
+  // }, [])
+
   const changeHandler = (e) => {
-    let newRow = [...grid[rowIdx]];
-    newRow[cellIdx] = Number(e.target.value);
-    let newGrid = [...grid];
-    newGrid[rowIdx] = newRow;
-    setGrid(newGrid);
-  };
+    let newRow = [...grid[rowIdx]]
+    newRow[cellIdx] = Number(e.target.value)
+    let newGrid = [...grid]
+    newGrid[rowIdx] = newRow
+    setGrid(newGrid)
+  }
   return (
     <td className={colors(`${rowIdx}-${cellIdx}`)}>
       <input
@@ -24,10 +30,11 @@ const TableData = ({ cellData, cellIdx, rowIdx, colors, setGrid, grid }) => {
         value={cellData}
         onChange={changeHandler}
         disabled={false}
+        ref={inputEl}
       />
     </td>
-  );
-};
+  )
+}
 
 TableData.propTypes = {
   cellIdx: PropTypes.number.isRequired,
@@ -35,6 +42,6 @@ TableData.propTypes = {
   colors: PropTypes.func.isRequired,
   grid: PropTypes.array.isRequired,
   setGrid: PropTypes.func.isRequired,
-};
+}
 
-export default TableData;
+export default TableData
