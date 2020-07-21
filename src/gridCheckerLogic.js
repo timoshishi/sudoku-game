@@ -169,4 +169,18 @@ export const isSame = (grid1, grid2) => {
   return true
 }
 
+//create a deep copy of a board
+export const boardCopier = (board) => {
+  let copy = []
+  for (let i = 0; i < board.length; i++) {
+    let row = board[i]
+    let newRow = []
+    for (let j = 0; j < board.length; j++) {
+      newRow.push(row[j])
+    }
+    copy.push(newRow)
+  }
+  return copy
+}
+
 //console.log(boardDuplicateChecker(puzzleClone));

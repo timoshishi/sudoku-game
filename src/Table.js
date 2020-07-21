@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import TableData from './TableData'
 import PropTypes from 'prop-types'
 
-const Table = ({ grid, setGrid }) => {
+const Table = ({ grid, setGrid, boardCopy }) => {
   useEffect(() => {
     setGrid(grid)
   }, [grid, setGrid])
-  const [editable, setEditable] = useState(true)
   //Set Colors Dynamically depending on id/grid coordinates
   const colors = (id) => {
     const idArr = id.split('-')
@@ -41,7 +40,7 @@ const Table = ({ grid, setGrid }) => {
                       colors={colors}
                       setGrid={setGrid}
                       grid={grid}
-                      editable={editable}
+                      boardCopy={boardCopy}
                     />
                   )
                 })}

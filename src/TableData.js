@@ -9,12 +9,17 @@ const TableData = ({
   colors,
   setGrid,
   grid,
-  editable,
+  boardCopy,
 }) => {
   const inputEl = useRef(null)
-  // useLayoutEffect(() => {
-  //   if (!editable) inputEl.current.disabled = true
-  // }, [])
+  // console.log(boardCopy
+  useEffect(() => {
+    if (boardCopy && typeof boardCopy[rowIdx][cellIdx] === 'number') {
+      inputEl.current.disabled = true
+    } else if (boardCopy !== null) {
+      inputEl.current.disabled = false
+    }
+  }, [boardCopy])
 
   const changeHandler = (e) => {
     let newRow = [...grid[rowIdx]]
