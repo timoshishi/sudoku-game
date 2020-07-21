@@ -16,11 +16,12 @@ table {
   margin: auto;
   top: 50%;
   border-radius: 5px;
+  width: auto;
 }
 
 input {
-  width: 1.5em;
-  height: 1.5em;
+  width: 1em;
+  height: 1em;
   border-style: none;
   text-align: center;
   background-color: rgba(0, 0, 0, 0);
@@ -35,7 +36,8 @@ textarea {
 }
 .table-wrap {
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(255, 231, 0, 0.16),
+    0 3px 6px rgba(255, 231, 0, 0.23);
 }
 .tg {
   border-collapse: collapse;
@@ -51,12 +53,12 @@ textarea {
   padding: 10px 5px;
   word-break: normal;
   width: 2.8em;
-  height: 2em;
+  height: 1.5em;
 }
 
 /* Leaving This As 9 Sections If I need More Control Later */
 .section-1 {
-  background-color: #ff0081;
+  background-color: #ff71ce;
   text-align: center;
   vertical-align: center;
   opacity: 0.9;
@@ -68,7 +70,7 @@ textarea {
   opacity: 0.9;
 }
 .section-3 {
-  background-color: #ff0081;
+  background-color: #ff71ce;
   text-align: center;
   vertical-align: center;
   opacity: 0.9;
@@ -80,7 +82,7 @@ textarea {
   opacity: 0.9;
 }
 .section-5 {
-  background-color: #f4b80c;
+  background-color: #05ffa1;
   text-align: center;
   vertical-align: center;
   opacity: 0.9;
@@ -92,7 +94,7 @@ textarea {
   opacity: 0.9;
 }
 .section-7 {
-  background-color: #ff0081;
+  background-color: #ff71ce;
   text-align: center;
   vertical-align: center;
   opacity: 0.9;
@@ -104,7 +106,7 @@ textarea {
   opacity: 0.9;
 }
 .section-9 {
-  background-color: #ff0081;
+  background-color: #ff71ce;
   text-align: center;
   vertical-align: center;
   opacity: 0.9;

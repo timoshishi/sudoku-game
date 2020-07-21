@@ -54,9 +54,11 @@ const BoardMaker = ({ setGrid, showButtons, setShowButtons, setBoardCopy }) => {
     let difficulty = difficultySetting(e.target.value)
     let solvedBoard = sudoStringHandler()
     let finalBoard = boardMaker(solvedBoard, difficulty)
+    //copies board so that each cell can check whether it should be disabled or not
     let startingBoardCopy = boardCopier(finalBoard)
     setBoardCopy(startingBoardCopy)
     setGrid(finalBoard)
+    //button view goes back to 'new game' and 'check board'
     setShowButtons(!showButtons)
   }
 

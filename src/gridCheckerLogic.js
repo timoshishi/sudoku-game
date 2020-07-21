@@ -62,15 +62,18 @@ const getColumn = (grid, columnIdx) => {
 //GETS A SINGLE SECTION FOR VALIDATION
 export const getSection = (grid, column, rowX) => {
   //we want to get slices of three indexes of three rows to make a section that is 3x3
-
+  //for loops sending the grid/column IDs from sudoku checker go from 0 - 2
+  // the sections are 0,0 0,1 0,2/1,0 1,1 1,2/ 2,0 2,1 2,3
   let section = []
   let yIdx = 0
   let startRow = 0
   //check coord for where to start slicing on column
+  //yIdx is the y coordinate for the entire section
   if (column === 0) yIdx = 0
   if (column === 1) yIdx = 3
   if (column === 2) yIdx = 6
   //check the row for the same
+  //xIdx is the x coordinate for the entire section
   if (rowX === 0) startRow = 0
   if (rowX === 1) startRow = 3
   if (rowX === 2) startRow = 6
@@ -79,10 +82,9 @@ export const getSection = (grid, column, rowX) => {
   for (let i = startRow; i < startRow + 3; i++) {
     let currRow = grid[i]
 
-    //This next two lines is mch easire to understand than what I have below but russell didn't like slice?
-    // let currentSliceOfRow = currRow.slice(yIdx, yIdx +3)
-    //section.push(currentSliceOfRow)
-    section.push(currRow[yIdx], currRow[yIdx + 1], currRow[yIdx + 2])
+    let currentSlice = currRow.slice(yIdx, yIdx + 3)
+    section.push(...currentSlice)
+    //section.push(currRow[yIdx], currRow[yIdx + 1], currRow[yIdx + 2])
   }
   return section
 }
@@ -183,4 +185,14 @@ export const boardCopier = (board) => {
   return copy
 }
 
-//console.log(boardDuplicateChecker(puzzleClone));
+export const emptyBoardMaker = () => {
+  let grid = []
+  let row = []
+  for (let i = 0; i < 9; i++) {
+    row.push('')
+  }
+  for (let i = 0; i < 9; i++) {
+    grid.push(row)
+  }
+  return grid
+}

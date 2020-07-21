@@ -1,5 +1,6 @@
 // eslint-disable-next-line
-import React, { useRef, useEffect, useLayoutEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
+import { boardCopier } from './gridCheckerLogic'
 import PropTypes from 'prop-types'
 
 const TableData = ({
@@ -12,20 +13,25 @@ const TableData = ({
   boardCopy,
 }) => {
   const inputEl = useRef(null)
-  // console.log(boardCopy
   useEffect(() => {
+    //Checks whether cell should be rendered disabled. if it existed on the original board
+    //'boardCopy' then it will be disabled
     if (boardCopy && typeof boardCopy[rowIdx][cellIdx] === 'number') {
       inputEl.current.disabled = true
     } else if (boardCopy !== null) {
       inputEl.current.disabled = false
     }
+    // eslint-disable-next-line
   }, [boardCopy])
 
+  //HANDLES INPUT ON INDIVIDUAL CELLS
   const changeHandler = (e) => {
+    //makes copy of row
     let newRow = [...grid[rowIdx]]
+    //sets row at current index to the change
     newRow[cellIdx] = Number(e.target.value)
-    let newGrid = [...grid]
-    newGrid[rowIdx] = newRow
+    let newGrid = [...grid] //deep copy of grid
+    newGrid[rowIdx] = newRow //replace row with new row
     setGrid(newGrid)
   }
   return (
