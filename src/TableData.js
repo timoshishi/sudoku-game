@@ -30,7 +30,7 @@ const TableData = ({
     let newRow = [...grid[rowIdx]]
     //sets row at current index to the change
     newRow[cellIdx] = Number(e.target.value)
-    let newGrid = [...grid] //deep copy of grid
+    let newGrid = boardCopier(grid) //deep copy of grid
     newGrid[rowIdx] = newRow //replace row with new row
     setGrid(newGrid)
   }
