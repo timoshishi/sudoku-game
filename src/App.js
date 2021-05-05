@@ -1,50 +1,37 @@
-import React, { useState, useEffect } from 'react'
-import Table from './Table'
-// import GridChecker from './GridChecker';
-import BoardMaker from './BoardMaker'
-import './App.css'
-import { sudokuChecker } from './gridCheckerLogic'
-// eslint-disable-next-line
-const defaultGrid = [
-  ['', '', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', '', ''],
-  ['', '', '', '', '', '', '', '', ''],
-]
+import React, { useState, useEffect } from 'react';
+import Table from './Table';
+import BoardButtons from './BoardButtons';
+import './App.css';
+import { emptyBoardMaker } from './logic/boardCreation';
+import { validateBoard } from './logic/sudokuChecker';
 
 function App() {
-  const [grid, setGrid] = useState(defaultGrid)
-  const [validGrid, setValidGrid] = useState(false)
-  const [showResults, setShowResults] = useState(null)
-  const [showButtons, setShowButtons] = useState(true)
-  const [boardCopy, setBoardCopy] = useState(null)
+  const [grid, setGrid] = useState(emptyBoardMaker());
+  const [validGrid, setValidGrid] = useState(false);
+  const [showResults, setShowResults] = useState(null);
+  const [showButtons, setShowButtons] = useState(true);
+  const [boardCopy, setBoardCopy] = useState(null);
 
-  //Keeps watch for valid grid
   useEffect(() => {
-    setValidGrid(sudokuChecker(grid))
-  }, [grid])
+    setValidGrid(validateBoard(grid));
+  }, [grid]);
 
-  //CHECKS IF GRID IS VALID ON CLICK - REMOVES RESULTS AFTER 2.5 SECONDS if failing
   const checkBoardClickHandler = () => {
-    setShowResults(!showResults)
+    setShowResults(!showResults);
     if (!validGrid) {
       setTimeout(() => {
-        setShowResults(false)
-      }, 2500)
+        setShowResults(false);
+      }, 2500);
     }
-  }
-  //SETS NEW BOARD TO EMPTY, CHANGES VIEW TO BoardMaker
+  };
+
   const newBoardClickHandler = () => {
-    setGrid(defaultGrid)
-    setShowButtons(!showButtons)
-    setShowResults(false)
-    setBoardCopy(null)
-  }
+    setGrid(emptyBoardMaker());
+    setShowButtons(!showButtons);
+    setShowResults(false);
+    setBoardCopy(null);
+  };
+
   return (
     <div className='app'>
       {!showResults && <h3 className='app-header'>Sudoku?</h3>}{' '}
@@ -52,7 +39,7 @@ function App() {
       {showResults && !validGrid && <h4 className='results'>Failure!</h4>}
       <Table grid={grid} setGrid={setGrid} boardCopy={boardCopy} />
       {showButtons ? (
-        <BoardMaker
+        <BoardButtons
           setGrid={setGrid}
           showButtons={showButtons}
           setShowButtons={setShowButtons}
@@ -72,7 +59,7 @@ function App() {
       )}
       <img src='src\assets\sudoku-logo.png' alt='' />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
