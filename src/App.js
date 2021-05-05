@@ -35,8 +35,8 @@ function App() {
   return (
     <div className='app'>
       {!showResults && <h3 className='app-header'>Sudoku?</h3>}{' '}
-      {showResults && validGrid && <h4 className='results'>Valid Grid!</h4>}
-      {showResults && !validGrid && <h4 className='results'>Failure!</h4>}
+      {showResults && validGrid && <h3 className='results'>Valid Grid!</h3>}
+      {showResults && !validGrid && <h3 className='results'>Failure!</h3>}
       <Table grid={grid} setGrid={setGrid} boardCopy={boardCopy} />
       {showButtons ? (
         <BoardButtons
